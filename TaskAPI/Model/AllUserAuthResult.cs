@@ -1,6 +1,6 @@
 ﻿namespace TaskAPI.Model
 {
-    public class UserAuthResult
+    public class AllUserAuthResult
     {
         public int? UserId { get; set; }
         public string? Name { get; set; }
