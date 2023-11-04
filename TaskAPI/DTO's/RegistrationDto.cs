@@ -1,7 +1,7 @@
 ﻿
 namespace TaskAPI.DTO_s
 {
-    public class AllUserRegistrationDto
+    public class RegistrationDto
     {
 
       
