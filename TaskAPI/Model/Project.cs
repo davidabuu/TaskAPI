@@ -1,18 +1,22 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
 namespace TaskAPI.Model
 {
-    public class Task
+    public class Project
     {
-        
-        public string? TaskId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? ProjectId { get; set; }
         
         public string? Title { get; set; }
         
         public string? Description { get; set; }
-        
-        public bool? AssignedToManager { get; set; }
-        
-        public bool? AssignedToEmployee { get; set; }
+
+        public bool? AssignedToManager { get; set; } = false;
+
+        public bool? AssignedToEmployee { get; set; } = false;
 
 
         public int? MangaerId { get; set; }

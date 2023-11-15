@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskAPI.Data;
 
@@ -10,9 +11,11 @@ using TaskAPI.Data;
 namespace TaskAPI.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231106232447_Updated ")]
+    partial class Updated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -217,43 +220,10 @@ namespace TaskAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TaskAPI.DTO_s.RefreshToken", b =>
+            modelBuilder.Entity("TaskAPI.Model.Task", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("AddedDate")
+                    b.Property<string>("TaskId")
                         .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("ExpiryDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsRevoked")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsUsed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("JwtId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Token")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RefreshTokens");
-                });
-
-            modelBuilder.Entity("TaskAPI.Model.Project", b =>
-                {
-                    b.Property<int?>("ProjectId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
 
                     b.Property<bool?>("AssignedToEmployee")
                         .HasColumnType("INTEGER");
@@ -282,9 +252,9 @@ namespace TaskAPI.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ProjectId");
+                    b.HasKey("TaskId");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("TaskAPI.Model.ApplicationUsers", b =>

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskAPI.Data;
 
@@ -10,9 +11,11 @@ using TaskAPI.Data;
 namespace TaskAPI.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231110223052_Add Refresh Token")]
+    partial class AddRefreshToken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -249,11 +252,10 @@ namespace TaskAPI.Migrations
                     b.ToTable("RefreshTokens");
                 });
 
-            modelBuilder.Entity("TaskAPI.Model.Project", b =>
+            modelBuilder.Entity("TaskAPI.Model.Task", b =>
                 {
-                    b.Property<int?>("ProjectId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("TaskId")
+                        .HasColumnType("TEXT");
 
                     b.Property<bool?>("AssignedToEmployee")
                         .HasColumnType("INTEGER");
@@ -282,9 +284,9 @@ namespace TaskAPI.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ProjectId");
+                    b.HasKey("TaskId");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("TaskAPI.Model.ApplicationUsers", b =>

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskAPI.Data;
 
@@ -10,9 +11,11 @@ using TaskAPI.Data;
 namespace TaskAPI.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231115222445_Project Migration")]
+    partial class ProjectMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -251,9 +254,9 @@ namespace TaskAPI.Migrations
 
             modelBuilder.Entity("TaskAPI.Model.Project", b =>
                 {
-                    b.Property<int?>("ProjectId")
+                    b.Property<string>("ProjectId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool?>("AssignedToEmployee")
                         .HasColumnType("INTEGER");
