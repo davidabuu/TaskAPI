@@ -8,7 +8,7 @@ namespace TaskAPI.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? ProjectId { get; set; }
+        public int ProjectId { get; set; }
         
         public string? Title { get; set; }
         

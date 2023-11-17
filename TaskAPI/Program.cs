@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TaskAPI.Configuration;
+using TaskAPI.Core;
 using TaskAPI.Data;
 using TaskAPI.Model;
 
@@ -20,6 +21,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 //builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection("JwtConfig"));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection("JwtConfig:Secret").Value!);
 var tokenValidationParameter = new TokenValidationParameters()
 {

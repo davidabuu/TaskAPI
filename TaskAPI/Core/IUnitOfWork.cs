@@ -2,7 +2,7 @@
 {
     public interface IUnitOfWork
     {
-        IProjectRepository ProjectRepository { get; }
+        IProjectRepository Projects { get; }
 
         Task CompletAsync();
     }
